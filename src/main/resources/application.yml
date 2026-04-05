@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: finance-dashboard
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:finance_dashboard}?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+
+server:
+  port: ${SERVER_PORT:8080}
+
+jwt:
+  # HS256: use a UTF-8 string of at least 32 bytes (e.g. 32+ random chars) in production via JWT_SECRET.
+  secret: ${JWT_SECRET:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef}
+  expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+
+app:
+  seed:
+    enabled: ${APP_SEED_ENABLED:false}
+    admin-username: ${APP_SEED_ADMIN_USERNAME:}
+    admin-password: ${APP_SEED_ADMIN_PASSWORD:}
+    admin-email: ${APP_SEED_ADMIN_EMAIL:}
+
+logging:
+  level:
+    org.springframework.security: INFO

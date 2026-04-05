@@ -1,0 +1,8 @@
+# Use with: spring.profiles.active=dev
+# Relaxes validation of schema during early development if needed.
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
